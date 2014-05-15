@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.redlettermedia" name="Redlettermedia" version="0.5" provider-name="BlackLotus">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Redlettermedia</summary>
+        <language>en</language>
+        <description lang="en">The bestest Movie critique site like ever</description>
+    <platform>all</platform>
+    </extension>
+</addon>
