@@ -2,12 +2,14 @@
 #took addDir and addLink from the southpark plugin
 import xbmcplugin,xbmcgui,xbmcaddon
 import re,urllib,sys
-import HTMLParser,blip
+import HTMLParser
+from BlipVideo.blip import BlipVideo
 h = HTMLParser.HTMLParser()
 
 #url="http://redlettermedia.com/half-in-the-bag/"
 pluginhandle = int(sys.argv[1])
 #addon=xbmcaddon.Addon(id='plugin.redlettermedia')
+blip=BlipVideo()
 
 def index():
     addDir('Mr. Plinkett', 'http://redlettermedia.com/plinkett/','get_menus','')
@@ -52,7 +54,7 @@ def get_videos(url):
         for video in videolist:
             addLink(h.unescape(video[1]),video[0],'','','')
     if videolist==[]:
-        videolist=blip.get_blip(url)
+        videolist=blip.find_blip(url)
         for video in videolist:
             addLink('url',video,'playVideo','','')
     if videolist==[]:
@@ -84,9 +86,9 @@ def playVideo(url):
     if re.match('^plugin:',url):
         urlFull+=url + ' , '
     linkliste=[]
-    linkliste=blip.get_blip(url)
+    linkliste=blip.find_blip(url)
     if linkliste==[]:
-        linkliste=blip.get_blip(url+'/')
+        linkliste=blip.find_blip(url+'/')
     for link in linkliste:
         urlFull+=link + ' , '
     urlFull=urlFull[:-3]
@@ -125,4 +127,3 @@ elif mode == 'search':
     search()
 else:
     index()
-

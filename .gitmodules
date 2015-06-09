@@ -1,0 +1,3 @@
+[submodule "BlipVideo"]
+	path = BlipVideo
+	url = https://github.com/BlackLotus/BlipVideo.git
